@@ -4,7 +4,7 @@
 
 Knotes is a simple note taking application meant for testing kubernetes orchestration
 
-## Docker Image => https://hub.docker.com/repository/docker/dgclasher/knotes/general
+### Docker image [here](https://hub.docker.com/repository/docker/dgclasher/knotes/general)
 
 ## Deployment in Kubernetes
 
