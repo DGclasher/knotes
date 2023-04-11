@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+    #menu-toggle:checked + #menu {
+      display: block;
+    }
+</style>
+</head>
+<body class="antialiased bg-grey-200">
+    <header class="lg:px-16 px-6 bg-black flex flex-wrap items-center z-10 lg:py-0 py-2">
+        <div class="flex-1 flex justify-between items-center">
+          <a href="/" class="text-xl hover:text-lime-700">
+            Knotes
+        </a>
+      </div>
+       <label for="menu-toggle" class="pointer-cursor lg:hidden block"><svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><title>menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg></label>
+      <input class="hidden" type="checkbox" id="menu-toggle" />
+      <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+        <nav>
+          <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
+            <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:text-lime-700" href="/">Home</a></li>
+            <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:text-lime-700" href="/notes">Create Note</a></li>
+          </ul>
+        </nav>
+        
+      </div>
+      </header>
+  <div class="p-4 gap-y-4">
+    <h1 class="text-3xl font-bold">
+      My Notes
+    </h1>
+    <% data.map(element => { %>
+      <div class="bg-slate-800 w-[80%] md:w-[60%] mt-2 mb-2 rounded-xl p-3">
+        <h1 class="text-2xl font-bold p-1"><%- element.title %></h1>
+        <p class="p-1 "><%- element.description %></p>
+        <form action="/notes/<%= element._id %>" method="post">
+          <button type="submit" class="bg-slate-900 p-1 rounded-xl justify-center"><ion-icon name="trash-outline"></ion-icon></button>
+        </form>
+      </div>
+      <% }) %>
+  </div>
+</body>
+</html>
