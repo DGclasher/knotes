@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knotes-deployment
+  labels:
+    app: knotes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: knotes
+  template:
+    metadata:
+      labels:
+        app: knotes
+    spec:
+      containers:
+        - name: knotes
+          image: dgclasher/knotes:0.1.1
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_URL
+              value: ${KNOTES_MONGO_URL}
+          imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: knotes
+spec:
+  selector:
+    app: knotes
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 31100
+  type: LoadBalancer
