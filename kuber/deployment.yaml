@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: knotes
-          image: dgclasher/knotes:0.1.1
+          image: dgclasher/knotes
           ports:
             - containerPort: 3000
           env:
