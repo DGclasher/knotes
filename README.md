@@ -8,9 +8,9 @@ Knotes is a simple note taking application meant for testing kubernetes orchestr
 
 + You would need [minikube](https://minikube.sigs.k8s.io/docs/start/), [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) and [docker](https://docs.docker.com/engine/install/) in order to create a cluster
 
-+ Clone the `kuber` branch of this repo which contains the deployment configuration
++ Get the deployment configuration
   ```
-  git clone https://github.com/DGclasher/knotes --branch kuber
+  wget https://github.com/DGclasher/knotes/raw/kuber/deployment.yaml
   ```
 
 + Start minikube
@@ -23,7 +23,7 @@ Knotes is a simple note taking application meant for testing kubernetes orchestr
   export KNOTES_MONGO_URL="< MongoDB URL to connect >"
   ```
   ```
-  cd kuber; envsubst < deployment.yaml | kubectl apply -f -
+  envsubst < deployment.yaml | kubectl apply -f -
   ```
 
 + Watch the pods baking up
